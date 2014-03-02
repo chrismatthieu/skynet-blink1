@@ -34,7 +34,7 @@ Plugin.prototype.onMessage = function(data, cb){
     if(device){
       var wemoSwitch = new WeMo(device.ip, device.port);
       var binaryState = 0;
-      if(data.on){
+      if(data.message && data.message.on){
         binaryState = 1;
       }
       console.log(wemoSwitch);
