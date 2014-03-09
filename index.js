@@ -29,12 +29,13 @@ var messageSchema = {
 
 Plugin.prototype.onMessage = function(data, cb){
   console.log('wemo data', data);
+  var payload = data.payload || data.message || {};
   WeMo.Search(this.options.friendlyName, function(err, device) {
 
     if(device){
       var wemoSwitch = new WeMo(device.ip, device.port);
       var binaryState = 0;
-      if(data.message && data.message.on){
+      if(payload.on){
         binaryState = 1;
       }
       console.log(wemoSwitch);
