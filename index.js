@@ -1,4 +1,3 @@
-
 var WeMo = require('wemo');
 
 function Plugin(messenger, options){
@@ -40,7 +39,7 @@ Plugin.prototype.onMessage = function(data, cb){
       }
       console.log(wemoSwitch);
       wemoSwitch.setBinaryState(binaryState, function(serr, result) {
-        if (err){
+        if (serr){
           console.error('error setting state', serr);
         }else{
           console.log(result);
