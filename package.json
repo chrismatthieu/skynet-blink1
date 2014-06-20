@@ -1,6 +1,6 @@
 {
   "name": "skynet-wemo",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Skynet gateway plugin to control Wemo devices",
   "main": "index.js",
   "scripts": {
