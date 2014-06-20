@@ -19,6 +19,6 @@
     "url": "https://github.com/monteslu/skynet-wemo/issues"
   },
   "dependencies": {
-    "wemo": "~0.1.0"
+    "wemo": "https://github.com/2fast2fourier/node-wemo.git#29993d3"
   }
 }
