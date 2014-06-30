@@ -1,24 +1,24 @@
 {
-  "name": "skynet-wemo",
-  "version": "0.6.1",
-  "description": "Skynet gateway plugin to control Wemo devices",
+  "name": "skynet-blink1",
+  "version": "0.1.0",
+  "description": "Skynet gateway plugin to control Blink1 devices",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/monteslu/skynet-wemo.git"
+    "url": "https://github.com/chrismatthieu/skynet-blink1"
   },
   "keywords": [
     "skynet-plugin"
   ],
-  "author": "Luis Montes",
+  "author": "Chris Matthieu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/monteslu/skynet-wemo/issues"
+    "url": "https://github.com/chrismatthieu/skynet-blink1/issues"
   },
   "dependencies": {
-    "wemo": "git://github.com/2fast2fourier/node-wemo.git#8f9ade8780d1e26a9e013a455ec4a2317d0afd73"
+    "request":"*"
   }
 }

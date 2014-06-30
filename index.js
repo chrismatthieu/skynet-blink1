@@ -1,4 +1,4 @@
-var WeMo = require('wemo');
+var request = require('request');
 
 function Plugin(messenger, options){
   this.messenger = messenger;
@@ -9,7 +9,7 @@ function Plugin(messenger, options){
 var optionsSchema = {
   type: 'object',
   properties: {
-    friendlyName: {
+    ipAddress: {
       type: 'string',
       required: true
     }
@@ -22,40 +22,36 @@ var messageSchema = {
     on: {
       type: 'boolean',
       required: true
+    },
+    rgb: {
+      type: 'string',
+      required: false
     }
   }
 };
 
 Plugin.prototype.onMessage = function(data, cb){
-  console.log('wemo data', data);
+  console.log('blink1 data', data);
   var payload = data.payload || data.message || {};
-  WeMo.Search(this.options.friendlyName, function(err, device) {
 
-    if(device){
-      var wemoSwitch = new WeMo(device.ip, device.port);
-      var binaryState = 0;
-      if(payload.on){
-        binaryState = 1;
-      }
-      console.log(wemoSwitch);
-      wemoSwitch.setBinaryState(binaryState, function(serr, result) {
-        if (serr){
-          console.error('error setting state', serr);
-        }else{
-          console.log(result);
-        }
+  if(payload.off){
+    request.get('http://' + this.options.ipAddress + '/blink1/off', function (error, response, body) {
+      console.log(response);
+    });
+  }
 
-        if(cb){
-          cb(serr, result);
-        }
-
-      });
-    }else{
-      if(cb){
-        cb(err, null);
-      }
+  if(payload.on){
+    if(payload.rgb){
+      var color = payload.rgb;
+    } else {
+      var color = #FFFFFF;
     }
-  });
+    request.get('http://' + this.options.ipAddress + '/blink1/fadeToRGB',
+      {qs: {'rgb': color}}
+      , function (error, response, body) {
+      console.log(response);
+    });
+  }
 
 };
 
