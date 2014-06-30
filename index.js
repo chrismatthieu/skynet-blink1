@@ -35,7 +35,9 @@ Plugin.prototype.onMessage = function(data, cb){
   var payload = data.payload || data.message || {};
 
   if(payload.off){
-    request.get('http://' + this.options.ipAddress + ':8934/blink1/off', function (error, response, body) {
+    request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB'
+      {qs: {'rgb': '#000000'}}
+      , function (error, response, body) {
       console.log(response);
     });
   }
