@@ -43,13 +43,13 @@ Plugin.prototype.onMessage = function(data, cb){
     request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
       {qs: {'rgb': color}}
       , function (error, response, body) {
-      console.log(response);
+      console.log(body);
     });
   } else {
     request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
       {qs: {'rgb': '#000000'}}
       , function (error, response, body) {
-      console.log(response);
+      console.log(body);
     });    
   }
 

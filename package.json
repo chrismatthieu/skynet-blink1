@@ -1,6 +1,6 @@
 {
   "name": "skynet-blink1",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Skynet gateway plugin to control Blink1 devices",
   "main": "index.js",
   "scripts": {
