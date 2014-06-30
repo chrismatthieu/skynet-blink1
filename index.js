@@ -35,7 +35,7 @@ Plugin.prototype.onMessage = function(data, cb){
   var payload = data.payload || data.message || {};
 
   if(payload.off){
-    request.get('http://' + this.options.ipAddress + '/blink1/off', function (error, response, body) {
+    request.get('http://' + this.options.ipAddress + ':8934/blink1/off', function (error, response, body) {
       console.log(response);
     });
   }
@@ -46,7 +46,7 @@ Plugin.prototype.onMessage = function(data, cb){
     } else {
       var color = "#FFFFFF";
     }
-    request.get('http://' + this.options.ipAddress + '/blink1/fadeToRGB',
+    request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
       {qs: {'rgb': color}}
       , function (error, response, body) {
       console.log(response);
