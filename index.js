@@ -34,14 +34,6 @@ Plugin.prototype.onMessage = function(data, cb){
   console.log('blink1 data', data);
   var payload = data.payload || data.message || {};
 
-  if(payload.off){
-    request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
-      {qs: {'rgb': '#000000'}}
-      , function (error, response, body) {
-      console.log(response);
-    });
-  }
-
   if(payload.on){
     if(payload.rgb){
       var color = payload.rgb;
@@ -53,6 +45,12 @@ Plugin.prototype.onMessage = function(data, cb){
       , function (error, response, body) {
       console.log(response);
     });
+  } else {
+    request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
+      {qs: {'rgb': '#000000'}}
+      , function (error, response, body) {
+      console.log(response);
+    });    
   }
 
 };
