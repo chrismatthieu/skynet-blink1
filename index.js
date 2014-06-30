@@ -44,7 +44,7 @@ Plugin.prototype.onMessage = function(data, cb){
     if(payload.rgb){
       var color = payload.rgb;
     } else {
-      var color = #FFFFFF;
+      var color = "#FFFFFF";
     }
     request.get('http://' + this.options.ipAddress + '/blink1/fadeToRGB',
       {qs: {'rgb': color}}
