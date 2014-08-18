@@ -11,7 +11,8 @@ var optionsSchema = {
   properties: {
     ipAddress: {
       type: 'string',
-      required: true
+      required: true,
+      default: '127.0.0.1'
     }
   }
 };
@@ -25,7 +26,7 @@ var messageSchema = {
     },
     rgb: {
       type: 'string',
-      required: false
+      required: true
     }
   }
 };
