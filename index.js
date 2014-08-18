@@ -11,8 +11,7 @@ var optionsSchema = {
   properties: {
     ipAddress: {
       type: 'string',
-      required: true,
-      default: '127.0.0.1'
+      required: true
     }
   }
 };
