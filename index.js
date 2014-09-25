@@ -6,16 +6,17 @@ function Plugin(messenger, options){
   return this;
 }
 
-var optionsSchema = {
-  type: 'object',
-  properties: {
-    ipAddress: {
-      type: 'string',
-      required: true,
-      default: '127.0.0.1'
-    }
-  }
-};
+// var optionsSchema = {
+//   type: 'object',
+//   properties: {
+//     ipAddress: {
+//       type: 'string',
+//       required: true,
+//       default: '127.0.0.1'
+//     }
+//   }
+// };
+var optionsSchema = {};
 
 var messageSchema = {
   type: 'object',
@@ -24,7 +25,7 @@ var messageSchema = {
       type: 'boolean',
       required: true
     },
-    rgb: {
+    hex: {
       type: 'string',
       required: true
     }
@@ -36,18 +37,19 @@ Plugin.prototype.onMessage = function(data, cb){
   var payload = data.payload || data.message || {};
 
   if(payload.on){
-    if(payload.rgb){
-      var color = payload.rgb;
+    if(payload.hex){      
+      var color = decodeURIComponent(payload.hex);
     } else {
       var color = "#FFFFFF";
     }
-    request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
+    // request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
+    request.get('http://127.0.0.1:8934/blink1/fadeToRGB',
       {qs: {'rgb': color}}
       , function (error, response, body) {
       console.log(body);
     });
   } else {
-    request.get('http://' + this.options.ipAddress + ':8934/blink1/fadeToRGB',
+    request.get('http://127.0.0.1:8934/blink1/fadeToRGB',
       {qs: {'rgb': '#000000'}}
       , function (error, response, body) {
       console.log(body);
