@@ -16,7 +16,6 @@ function Plugin(messenger, options){
 //     }
 //   }
 // };
-var optionsSchema = {};
 
 var messageSchema = {
   type: 'object',
@@ -66,6 +65,6 @@ Plugin.prototype.destroy = function(){
 
 module.exports = {
   Plugin: Plugin,
-  optionsSchema: optionsSchema,
+  // optionsSchema: optionsSchema,
   messageSchema: messageSchema
 };
