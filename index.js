@@ -24,7 +24,7 @@ var messageSchema = {
       type: 'boolean',
       required: true
     },
-    hex: {
+    color: {
       type: 'string',
       required: true
     }
@@ -36,8 +36,8 @@ Plugin.prototype.onMessage = function(data, cb){
   var payload = data.payload || data.message || {};
 
   if(payload.on){
-    if(payload.hex){      
-      var color = decodeURIComponent(payload.hex);
+    if(payload.color){      
+      var color = decodeURIComponent(payload.color);
     } else {
       var color = "#FFFFFF";
     }
