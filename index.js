@@ -36,7 +36,7 @@ Plugin.prototype.onMessage = function(data, cb){
   var payload = data.payload || data.message || {};
 
   if(payload.on){
-    if(payload.color){      
+    if(payload.color != undefined){      
       var color = decodeURIComponent(payload.color);
     } else {
       var color = "#FFFFFF";
