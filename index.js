@@ -34,9 +34,7 @@ var messageSchema = {
 Plugin.prototype.onMessage = function(data, cb){
   console.log('blink1 data', data);
   var payload = data.payload || data.message || {};
-  if(payload.on == 'True'){
-    payload.on = true;
-  }
+
   if(payload.on){
     if(payload.color != undefined){      
       var color = decodeURIComponent(payload.color);
